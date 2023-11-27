@@ -1,0 +1,23 @@
+import random
+import string
+
+MAX_LEN = 12
+
+digits = string.digits
+locase_characters = string.ascii_lowercase
+upcase_characters = string.ascii_uppercase
+symbols = '@#$%=:?.|~>*()/<>'
+
+combined_list = list(digits + upcase_characters + locase_characters + symbols)
+
+rand_digit = random.choice(digits)
+rand_upper = random.choice(upcase_characters)
+rand_lower = random.choice(locase_characters)
+rand_symbol = random.choice(symbols)
+
+temp_pass = rand_digit + rand_upper + rand_lower + rand_symbol
+random.shuffle(combined_list)
+temp_pass += ''.join(random.sample(combined_list, MAX_LEN - 4))
+
+password = ''.join(random.sample(temp_pass, len(temp_pass)))
+print(password)
